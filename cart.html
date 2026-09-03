@@ -5,12 +5,29 @@
 <title>ManaMart Cart</title>
 <style>
 body{font-family:Arial;background:#f5f7fb;padding:20px}
-button{background:#1565C0;color:white;border:none;padding:12px;border-radius:8px;width:100%}
+.box{background:#fff;padding:20px;border-radius:15px}
+button{width:100%;padding:12px;background:#1565C0;color:#fff;border:none;border-radius:10px;margin-top:10px}
 </style>
 </head>
 <body>
+
 <h1>🛒 ManaMart Cart</h1>
-<p>Your cart is ready.</p>
-<button onclick="location.href='index.html'">Back to Home</button>
+
+<div class="box">
+  <h2>Items in Cart</h2>
+  <h1 id="count">0</h1>
+  <button onclick="checkout()">Checkout</button>
+  <button onclick="location.href='index.html'">Back Home</button>
+</div>
+
+<script>
+let cart=localStorage.getItem("cart")||0;
+document.getElementById("count").innerText=cart;
+
+function checkout(){
+  alert("Checkout feature next step lo Razorpay tho connect chestam.");
+}
+</script>
+
 </body>
 </html>
