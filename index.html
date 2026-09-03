@@ -1,3 +1,17 @@
+<script>
+const p=JSON.parse(localStorage.getItem("manamart_product"));
+if(p){
+ const box=document.querySelector(".products");
+ const card=document.createElement("div");
+ card.className="card";
+ card.innerHTML=`
+  <div class="img">${p.emoji}</div>
+  <h3>${p.name}</h3>
+  <p>₹${p.price}</p>
+  <button onclick="addCart()">Add to Cart</button>`;
+ box.prepend(card);
+}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
