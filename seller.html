@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Seller</title></head>
-<body style="font-family:Arial;padding:20px;background:#f5f7fb">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seller Dashboard</title>
+<style>
+body{font-family:Arial;background:#f5f7fb;padding:20px}
+input{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #ccc}
+button{width:100%;padding:12px;background:#1565C0;color:#fff;border:none;border-radius:8px}
+</style>
+</head>
+<body>
 <h1>🏪 Seller Dashboard</h1>
-<input placeholder="Shop Name" style="width:100%;padding:10px"><br><br>
-<input placeholder="Product Name" style="width:100%;padding:10px"><br><br>
-<input placeholder="Price" style="width:100%;padding:10px"><br><br>
-<button style="width:100%;padding:12px;background:#1565C0;color:white;border:none;border-radius:8px">Upload Product</button>
+
+<input id="name" placeholder="Product Name">
+<input id="price" placeholder="Price">
+<input id="emoji" placeholder="Emoji (👟,👕,📱)">
+
+<button onclick="saveProduct()">Upload Product</button>
+
+<script>
+function saveProduct(){
+ let product={
+  name:document.getElementById("name").value,
+  price:document.getElementById("price").value,
+  emoji:document.getElementById("emoji").value
+ };
+
+ localStorage.setItem("manamart_product",JSON.stringify(product));
+ alert("Product Upload Success!");
+ location.href="index.html";
+}
+</script>
 </body>
 </html>
