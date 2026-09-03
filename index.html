@@ -1,75 +1,37 @@
-<script>
-let p=JSON.parse(localStorage.getItem("manamart_product"));
-
-if(p){
- let card=document.createElement("div");
- card.className="card";
- card.innerHTML=`
- <div class="img">${p.emoji}</div>
- <div class="name">${p.name}</div>
- <div class="price">₹${p.price}</div>
- <button class="buy">Add to Cart</button>
- `;
- document.getElementById("products").prepend(card);
-}
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ManaMart - Shop Local</title>
-
+<title>ManaMart</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#f5f7fb;color:#222}
-header{background:#0d47a1;color:white;padding:15px;position:sticky;top:0;z-index:100}
-.logo{font-size:28px;font-weight:bold}
-.tag{font-size:13px;opacity:.9}
-.search{margin-top:10px}
-.search input{width:100%;padding:12px;border:none;border-radius:10px;font-size:16px}
-.hero{margin:15px;background:linear-gradient(135deg,#1565c0,#42a5f5);color:white;padding:22px;border-radius:18px}
-.hero button{margin-top:10px;background:white;color:#1565c0;border:none;padding:10px 18px;border-radius:10px;font-weight:bold}
-.section{padding:0 15px}
-.title{font-size:20px;font-weight:bold;margin:18px 0 10px}
-.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.cat{background:white;border-radius:12px;padding:15px;text-align:center;font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-.products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
-.card{background:white;border-radius:16px;padding:10px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.img{height:110px;border-radius:10px;background:#eef3ff;display:flex;align-items:center;justify-content:center;font-size:48px}
-.name{font-weight:bold;margin-top:8px}
-.price{color:#1565c0;font-weight:bold;margin:6px 0}
-button.buy{width:100%;padding:10px;background:#1565c0;color:white;border:none;border-radius:8px}
-.seller{background:white;margin:15px;padding:18px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.seller input{width:100%;padding:11px;border:1px solid #ccc;border-radius:8px;margin-bottom:10px}
-.seller button{width:100%;padding:12px;background:#1565c0;color:white;border:none;border-radius:10px}
-.cartbox{position:fixed;bottom:70px;right:15px;background:#1565c0;color:white;padding:12px 15px;border-radius:50px;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.2)}
-footer{position:sticky;bottom:0;background:white;border-top:1px solid #ddd;padding:10px 0;display:flex;justify-content:space-around}
-footer div{text-align:center;font-size:13px}
+body{font-family:Arial;background:#f5f7fb}
+header{background:#1565C0;color:#fff;padding:15px}
+.search{width:100%;padding:12px;border:none;border-radius:10px;margin-top:10px}
+.hero{margin:15px;background:linear-gradient(135deg,#1565C0,#42A5F5);color:#fff;padding:20px;border-radius:16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:15px}
+.cat,.card{background:#fff;border-radius:12px;padding:12px;text-align:center}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px}
+button{background:#1565C0;color:#fff;border:none;padding:10px;border-radius:8px;width:100%}
+footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd;display:flex;justify-content:space-around;padding:10px}
+footer a{text-decoration:none;color:#222;text-align:center;font-size:13px}
 </style>
 </head>
-
 <body>
 
 <header>
-<div class="logo">🛒 ManaMart</div>
-<div class="tag">Shop Local • Support Local</div>
-
-<div class="search">
-<input id="search" placeholder="Search products...">
-</div>
+<h2>🛒 ManaMart</h2>
+<input class="search" placeholder="Search products...">
 </header>
 
 <div class="hero">
-<h2>ManaMart Marketplace</h2>
-<p>Local Shops • Fast Delivery • 90% Owner • 10% ManaMart</p>
-<button>Become a Seller</button>
+<h2>Shop Local • Support Local</h2>
+<p>90% Owner • 10% ManaMart</p>
+<button onclick="window.location.href='seller.html'">Become a Seller</button>
 </div>
 
-<div class="section">
-<div class="title">Categories</div>
-
-<div class="categories">
+<div class="grid">
 <div class="cat">👕 Clothes</div>
 <div class="cat">👟 Shoes</div>
 <div class="cat">📱 Mobiles</div>
@@ -78,127 +40,21 @@ footer div{text-align:center;font-size:13px}
 <div class="cat">🪑 Furniture</div>
 </div>
 
-<div class="title">Trending Products</div>
-
-<div class="products" id="products">
-
-<div class="card" data-name="Running Shoes">
-<div class="img">👟</div>
-<div class="name">Running Shoes</div>
-<div class="price">₹999</div>
-<button class="buy" onclick="addCart('Running Shoes')">Add to Cart</button>
+<div class="products">
+<div class="card"><h3>Running Shoes</h3><p>₹999</p><button>Add to Cart</button></div>
+<div class="card"><h3>Black T-Shirt</h3><p>₹499</p><button>Add to Cart</button></div>
+<div class="card"><h3>Smart Watch</h3><p>₹1499</p><button>Add to Cart</button></div>
+<div class="card"><h3>Headphones</h3><p>₹799</p><button>Add to Cart</button></div>
 </div>
 
-<div class="card" data-name="Black T-Shirt">
-<div class="img">👕</div>
-<div class="name">Black T-Shirt</div>
-<div class="price">₹499</div>
-<button class="buy" onclick="addCart('Black T-Shirt')">Add to Cart</button>
-</div>
-
-<div class="card" data-name="Smart Watch">
-<div class="img">⌚</div>
-<div class="name">Smart Watch</div>
-<div class="price">₹1499</div>
-<button class="buy" onclick="addCart('Smart Watch')">Add to Cart</button>
-</div>
-
-<div class="card" data-name="Headphones">
-<div class="img">🎧</div>
-<div class="name">Headphones</div>
-<div class="price">₹799</div>
-<button class="buy" onclick="addCart('Headphones')">Add to Cart</button>
-</div>
-
-<div class="card" data-name="Rice Bag">
-<div class="img">🍚</div>
-<div class="name">Rice Bag</div>
-<div class="price">₹1200</div>
-<button class="buy" onclick="addCart('Rice Bag')">Add to Cart</button>
-</div>
-
-<div class="card" data-name="Office Chair">
-<div class="img">🪑</div>
-<div class="name">Office Chair</div>
-<div class="price">₹2999</div>
-<button class="buy" onclick="addCart('Office Chair')">Add to Cart</button>
-</div>
-
-</div>
-</div>
-
-<div class="seller">
-<h2>Seller Registration</h2>
-<input placeholder="Shop Name">
-<input placeholder="Owner Name">
-<input placeholder="Phone Number">
-<input placeholder="UPI ID">
-<button onclick="registerSeller()">Register Store</button>
-</div>
-
-<div class="cartbox">
-🛒 Cart: <span id="cartCount">0</span>
-</div>
+<div style="height:80px"></div>
 
 <footer>
-<div>🏠<br>Home</div>
-<div>📦<br>Orders</div>
-<div>🛒<br>Cart</div>
-<div>👤<br>Profile</div>
+<a href="index.html">🏠<br>Home</a>
+<a href="orders.html">📦<br>Orders</a>
+<a href="cart.html">🛒<br>Cart</a>
+<a href="profile.html">👤<br>Profile</a>
 </footer>
-
-<script>
-let cart=0;
-
-function addCart(name){
-cart++;
-document.getElementById("cartCount").innerText=cart;
-alert(name+" added to cart.");
-}
-
-function registerSeller(){
-alert("Store Registration Submitted.");
-}
-
-document.getElementById("search").addEventListener("input",function(){
-
-let value=this.value.toLowerCase();
-
-document.querySelectorAll(".card").forEach(card=>{
-let name=card.dataset.name.toLowerCase();
-card.style.display=name.includes(value)?"block":"none";
-});
-
-});
-</script>
 
 </body>
 </html>
-<script>
-let cart=0;
-
-function addCart(name){
-  cart++;
-  document.getElementById("cartCount").innerText=cart;
-  alert(name+" Cart lo add ayyindi.");
-}
-
-function registerSeller(){
-  alert("Seller Registration page next version lo open avtundi.");
-}
-
-document.getElementById("search").addEventListener("input",function(){
-  let value=this.value.toLowerCase();
-  document.querySelectorAll(".card").forEach(card=>{
-    card.style.display=card.dataset.name.toLowerCase().includes(value)?"block":"none";
-  });
-});
-
-document.querySelector(".hero button").onclick=()=> {
-  document.querySelector(".seller").scrollIntoView({behavior:"smooth"});
-};
-
-document.querySelector(".hero button").onclick=()=>location.href="seller.html";
-document.querySelector("footer").children[1].onclick=()=>location.href="orders.html";
-document.querySelector("footer").children[2].onclick=()=>location.href="cart.html";
-document.querySelector("footer").children[3].onclick=()=>location.href="profile.html";
