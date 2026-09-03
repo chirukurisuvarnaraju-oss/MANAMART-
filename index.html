@@ -159,3 +159,32 @@ card.style.display=name.includes(value)?"block":"none";
 
 </body>
 </html>
+<script>
+let cart=0;
+
+function addCart(name){
+  cart++;
+  document.getElementById("cartCount").innerText=cart;
+  alert(name+" Cart lo add ayyindi.");
+}
+
+function registerSeller(){
+  alert("Seller Registration page next version lo open avtundi.");
+}
+
+document.getElementById("search").addEventListener("input",function(){
+  let value=this.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(card=>{
+    card.style.display=card.dataset.name.toLowerCase().includes(value)?"block":"none";
+  });
+});
+
+document.querySelector(".hero button").onclick=()=> {
+  document.querySelector(".seller").scrollIntoView({behavior:"smooth"});
+};
+
+document.querySelector("footer").children[0].onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+document.querySelector("footer").children[1].onclick=()=>alert("Orders feature next version lo.");
+document.querySelector("footer").children[2].onclick=()=>alert("Cart Items: "+cart);
+document.querySelector("footer").children[3].onclick=()=>alert("Profile feature next version lo.");
+</script>
