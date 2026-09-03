@@ -5,31 +5,44 @@
 <title>Seller Dashboard</title>
 <style>
 body{font-family:Arial;background:#f5f7fb;padding:20px}
-input{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #ccc}
-button{width:100%;padding:12px;background:#1565C0;color:#fff;border:none;border-radius:8px}
+input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ccc}
+button{width:100%;padding:12px;background:#1565C0;color:white;border:none;border-radius:8px}
+.card{background:white;padding:15px;border-radius:12px;margin-top:15px}
 </style>
 </head>
 <body>
+
 <h1>🏪 Seller Dashboard</h1>
 
+<input id="shop" placeholder="Shop Name">
 <input id="name" placeholder="Product Name">
 <input id="price" placeholder="Price">
 <input id="emoji" placeholder="Emoji (👟,👕,📱)">
 
 <button onclick="saveProduct()">Upload Product</button>
 
+<div class="card">
+<h3>Last Uploaded Product</h3>
+<div id="last">No product yet.</div>
+</div>
+
 <script>
 function saveProduct(){
- let product={
-  name:document.getElementById("name").value,
-  price:document.getElementById("price").value,
-  emoji:document.getElementById("emoji").value
+ const p={
+  shop:shop.value,
+  name:name.value,
+  price:price.value,
+  emoji:emoji.value || "📦"
  };
-
- localStorage.setItem("manamart_product",JSON.stringify(product));
+ localStorage.setItem("manamart_product",JSON.stringify(p));
+ last.innerHTML=`${p.emoji} <b>${p.name}</b><br>₹${p.price}<br>${p.shop}`;
  alert("Product Upload Success!");
- location.href="index.html";
+}
+const old=JSON.parse(localStorage.getItem("manamart_product"));
+if(old){
+ last.innerHTML=`${old.emoji} <b>${old.name}</b><br>₹${old.price}<br>${old.shop}`;
 }
 </script>
+
 </body>
 </html>
