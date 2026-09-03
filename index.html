@@ -183,8 +183,7 @@ document.querySelector(".hero button").onclick=()=> {
   document.querySelector(".seller").scrollIntoView({behavior:"smooth"});
 };
 
-document.querySelector("footer").children[0].onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
-document.querySelector("footer").children[1].onclick=()=>alert("Orders feature next version lo.");
-document.querySelector("footer").children[2].onclick=()=>alert("Cart Items: "+cart);
-document.querySelector("footer").children[3].onclick=()=>alert("Profile feature next version lo.");
-</script>
+document.querySelector(".hero button").onclick=()=>location.href="seller.html";
+document.querySelector("footer").children[1].onclick=()=>location.href="orders.html";
+document.querySelector("footer").children[2].onclick=()=>location.href="cart.html";
+document.querySelector("footer").children[3].onclick=()=>location.href="profile.html";
